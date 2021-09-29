@@ -275,7 +275,7 @@ export class AppComponent extends GeneralForm implements OnInit {
     }
 
     // 560907-12-6765
-    this.wx.getPatientData('560907-12-6765'/*this.patient.idnum*/).subscribe((res: any) => {
+    this.wx.getPatientData(this.patient.idnum).subscribe((res: any) => {
       this.patient.prn = res.prn;
       this.vpatient.prn = res.prn;
       this.vpatient.name = `${res.name.firstName} ${res.name.middleName} ${res.name.lastName}`.trim();
