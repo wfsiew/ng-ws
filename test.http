@@ -1,0 +1,91 @@
+@baseUrl = http://localhost:8300
+@baseurl = http://nh-callisto:8081/vesalius-his-backend-2.0.1
+
+###
+
+GET {{baseurl}}/vesalius/patient-data/21-000078
+
+###
+
+POST {{baseurl}}/vesalius/createNewPatient
+Content-Type: application/json
+
+{
+  "name": "Ang Li",
+  "docNo": "88442200",
+  "dob": "1-Jan-1899",
+  "address1": "Lorong Kilang",
+  "address2": "Jalan Taman",
+  "address3": "Rumah Sewa",
+  "cityState": "Rawang",
+  "postCode": "47168",
+  "sex": "M",
+  "contact": "999888666",
+  "workstationCode": "NH-MEINALY"
+}
+
+###
+
+GET {{baseUrl}}/patient/21-000070
+
+###
+
+POST {{baseUrl}}/patient
+Content-Type: application/json
+
+{
+  "token_number": "2409179031045",
+  "document_no": "88770000",
+  "first_name": "Sanip",
+  "resident": "Y",
+  "dob": "01-Sep-1990",
+  "sex": "M",
+  "contact": "88997700",
+  "address1": "Jalan Hospital",
+  "address2": "",
+  "address3": "",
+  "postal_code": "",
+  "city_state": "",
+  "nationality": "SG",
+  "charge_category": "01",
+  "payment_class": "OP",
+  "company_code": "IHP"
+}
+
+###
+
+PUT {{baseUrl}}/patient
+Content-Type: application/json
+
+{
+  "token_number": "2409179031045",
+  "prn": "21-000070",
+  "document_no": "88775522",
+  "first_name": "Mohd Samat Ali",
+  "resident": "Y",
+  "dob": "01-Sep-1990",
+  "sex": "M",
+  "contact": "88997711",
+  "address1": "Jalan Hospital",
+  "address2": "",
+  "address3": "",
+  "postal_code": "",
+  "city_state": "",
+  "nationality": "MY",
+  "charge_category": "xx",
+  "payment_class": "xx",
+  "company_code": "IHP"
+}
+
+###
+
+GET {{baseUrl}}/login
+
+###
+
+POST {{baseUrl}}/logout
+Content-Type: application/json
+
+{
+  "token_number": 2409179111315
+}
