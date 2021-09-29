@@ -85,6 +85,7 @@ export class AppComponent extends GeneralForm implements OnInit {
     });
     this.mformx = this.fb.group({
       name: [false],
+      dob: [false],
       addr1: [false],
       addr2: [false],
       addr3: [false],
@@ -127,7 +128,7 @@ export class AppComponent extends GeneralForm implements OnInit {
     });
   }
 
-  onConvertSubmit() {
+  onProceed() {
     
   }
 
