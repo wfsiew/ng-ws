@@ -98,50 +98,70 @@
 <div class="container-fluid" *ngIf="!isLoading && !noPatient && patient.prn !== ''">
   <div class="row">
     <div class="col-md-6">
-      <div class="card mt-3">
-        <div class="card-body">
-          <h5 class="card-title">Biodata - MyKad</h5>
-          <div class="text-danger font-weight-bold">Select record(s) of address to update into VESALIUS</div>
-          <div class="mt-4">
-            <div class="row">
-              <div class="col-sm-2">Name:</div>
-              <div class="col-sm-10">{{ patient.name }}</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-2">NRIC:</div>
-              <div class="col-sm-10">{{ patient.idnum }}</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-2">DOB:</div>
-              <div class="col-sm-10">{{ patient.dob }}</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-2">Gender:</div>
-              <div class="col-sm-10">{{ patient.gender }}</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-2">Address 1:</div>
-              <div class="col-sm-10">{{ patient.addr1 }}</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-2">Address 2:</div>
-              <div class="col-sm-10">{{ patient.addr2 }}</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-2">Address 3:</div>
-              <div class="col-sm-10">{{ patient.addr3 }}</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-2">Postal Code:</div>
-              <div class="col-sm-10">{{ patient.postcode }}</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-2">City/State:</div>
-              <div class="col-sm-10">{{ patient.state }}</div>
+      <form [formGroup]="mformx" (ngSubmit)="onConvertSubmit()">
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title">Biodata - MyKad</h5>
+            <div class="text-danger font-weight-bold">Select record(s) of address to update into VESALIUS</div>
+            <div class="mt-4">
+              <div class="row">
+                <div class="col-sm-2">Name:</div>
+                <div class="col-sm-9">{{ patient.name }}</div>
+                <div class="col-sm-1">
+                  <input type="checkbox" class="form-check-input" formControlName="name">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">NRIC:</div>
+                <div class="col-sm-10">{{ patient.idnum }}</div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">DOB:</div>
+                <div class="col-sm-10">{{ patient.dob }}</div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">Gender:</div>
+                <div class="col-sm-10">{{ patient.gender }}</div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">Address 1:</div>
+                <div class="col-sm-9">{{ patient.addr1 }}</div>
+                <div class="col-sm-1">
+                  <input type="checkbox" class="form-check-input" formControlName="addr1">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">Address 2:</div>
+                <div class="col-sm-9">{{ patient.addr2 }}</div>
+                <div class="col-sm-1">
+                  <input type="checkbox" class="form-check-input" formControlName="addr2">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">Address 3:</div>
+                <div class="col-sm-9">{{ patient.addr3 }}</div>
+                <div class="col-sm-1">
+                  <input type="checkbox" class="form-check-input" formControlName="addr3">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">Postal Code:</div>
+                <div class="col-sm-9">{{ patient.postcode }}</div>
+                <div class="col-sm-1">
+                  <input type="checkbox" class="form-check-input" formControlName="postcode">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">City/State:</div>
+                <div class="col-sm-9">{{ patient.state }}</div>
+                <div class="col-sm-1">
+                  <input type="checkbox" class="form-check-input" formControlName="state">
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
     <div class="col-md-6">
       <div class="card mt-3">

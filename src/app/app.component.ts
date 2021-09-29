@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { WsService } from './services/ws.service';
@@ -55,6 +55,8 @@ export class AppComponent extends GeneralForm implements OnInit {
     prn: ''
   }
 
+  mformx!: FormGroup;
+
   @ViewChild('modalSuccess') modalSuccess!: TemplateRef<any>;
   @ViewChild('modalAlert') modalAlert!: TemplateRef<any>;
 
@@ -80,6 +82,14 @@ export class AppComponent extends GeneralForm implements OnInit {
   createForm() {
     this.mform = this.fb.group({
       contact: ['', [Validators.required]]
+    });
+    this.mformx = this.fb.group({
+      name: [false],
+      addr1: [false],
+      addr2: [false],
+      addr3: [false],
+      postcode: [false],
+      state: [false]
     });
   }
 
@@ -115,6 +125,10 @@ export class AppComponent extends GeneralForm implements OnInit {
         alert(error.error.message);
       }
     });
+  }
+
+  onConvertSubmit() {
+    
   }
 
   onModalOk() {
@@ -260,7 +274,7 @@ export class AppComponent extends GeneralForm implements OnInit {
     }
 
     // 560907-12-6765
-    this.wx.getPatientData(this.patient.idnum).subscribe((res: any) => {
+    this.wx.getPatientData('560907-12-6765'/*this.patient.idnum*/).subscribe((res: any) => {
       this.patient.prn = res.prn;
       this.vpatient.prn = res.prn;
       this.vpatient.name = `${res.name.firstName} ${res.name.middleName} ${res.name.lastName}`.trim();
