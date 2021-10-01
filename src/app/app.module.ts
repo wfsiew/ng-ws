@@ -31,7 +31,9 @@ import { HttpTimeoutInterceptor } from './shared/interceptors/timeout.intercepto
       bgsType: 'ball-spin-clockwise',
       fgsPosition: POSITION.topCenter,
       fgsColor: '#f04124',
-      fgsType: 'ball-spin-clockwise'
+      fgsType: 'ball-spin-clockwise',
+      pbColor: '#f04124',
+      hasProgressBar: true
     }),
     NgxUiLoaderHttpModule.forRoot({
       showForeground: true,

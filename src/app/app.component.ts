@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { WsService } from './services/ws.service';
 import { WebService } from './services/web.service';
 import { GeneralForm } from './shared/classes/general.form';
@@ -67,6 +68,7 @@ export class AppComponent extends GeneralForm implements OnInit {
     private ws: WsService, 
     private wx: WebService, 
     private modalService: BsModalService,
+    private ngxLoader: NgxUiLoaderService,
     private route: ActivatedRoute
   ) {
     super();
@@ -79,6 +81,7 @@ export class AppComponent extends GeneralForm implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
+    this.ngxLoader.startLoader('loader-01');
     this.readMyKad();
   }
 
@@ -216,6 +219,7 @@ export class AppComponent extends GeneralForm implements OnInit {
 
       else {
         this.isLoading = false;
+        this.ngxLoader.stopLoader('loader-01');
         this.alertMsg = 'Cannot find a MyKad reader. Please ensure the MyKad reader is connected to the PC';
         this.bsModalRef = this.modalService.show(
           this.modalAlert
@@ -227,6 +231,7 @@ export class AppComponent extends GeneralForm implements OnInit {
 
   myReadMyKadCallback(data, respcode, sw12AndApiName) {
     this.isLoading = false;
+    this.ngxLoader.stopLoader('loader-01');
     this.hasPhoto = false;
     if (typeof data == 'object') {
       this.displayMessage(`readMyKad>> RespCode: ${respcode}`);

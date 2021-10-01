@@ -91,9 +91,9 @@
   }
 </style>
 
-<div *ngIf="isLoading" class="spinner-border loading" role="status">
+<!-- <div *ngIf="isLoading" class="spinner-border loading" role="status">
   <span class="sr-only">Loading...</span>
-</div>
+</div> -->
 
 <div class="container-fluid" *ngIf="!isLoading && !noPatient && patient.prn !== ''">
   <div class="row">
@@ -449,5 +449,6 @@
   </table>
 </div>
 
+<ngx-ui-loader [loaderId]="'loader-01'"></ngx-ui-loader>
 <ngx-ui-loader></ngx-ui-loader>
 <router-outlet></router-outlet>
