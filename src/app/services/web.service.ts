@@ -18,4 +18,8 @@ export class WebService {
   createPatient(o) {
     return this.http.post(`${this.baseUrl}/vesalius/createNewPatient`, o);
   }
+
+  updatePatient(o, prn) {
+    return this.http.post(`${this.baseUrl}/vesalius/updateExstingPatient/${prn}`, o);
+  }
 }

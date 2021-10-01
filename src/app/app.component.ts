@@ -52,7 +52,8 @@ export class AppComponent extends GeneralForm implements OnInit {
     addr3: '',
     postcode: '',
     state: '',
-    prn: ''
+    prn: '',
+    contact: ''
   }
 
   mformx!: FormGroup;
@@ -129,7 +130,38 @@ export class AppComponent extends GeneralForm implements OnInit {
   }
 
   onProceed() {
-    
+    const f = this.mformx.value;
+    console.log(f);
+    if (f.name === true || f.dob === true || f.addr1 === true || f.addr2 === true || f.addr3 === true ||f.postcode === true || f.state === true) {
+      const o = {
+        name: this.vpatient.name,
+        docNo: this.vpatient.idnum, // this.patient.idnum, //'560907-12-6765',
+        dob: this.vpatient.dobs,
+        address1: this.vpatient.addr1,
+        address2: this.vpatient.addr2,
+        address3: this.vpatient.addr3,
+        cityState: this.vpatient.state,
+        postCode: this.vpatient.postcode,
+        sex: this.vpatient.gender === 'FEMALE' ? 'F' : 'M',
+        contact: this.vpatient.contact,
+        workstationCode: this.vx_comp_name
+      }
+
+      this.wx.updatePatient(o, this.patient.prn).subscribe((res: any) => {
+        parent.postMessage(this.patient.prn, '*');
+        parent.postMessage('onselect', '*');
+      }, (error) => {
+        console.log(error);
+        if (error.error) {
+          alert(error.error.message);
+        }
+      });
+    }
+
+    else {
+      parent.postMessage(this.patient.prn, '*');
+      parent.postMessage('onselect', '*');
+    }
   }
 
   onModalOk() {
@@ -274,8 +306,8 @@ export class AppComponent extends GeneralForm implements OnInit {
       this.displayMessage(`${data.RespMessage}, RespCode: ${data.RespCode}, SW12: ${data.RespSW12AndApiName}`);
     }
 
-    // 560907-12-6765
-    this.wx.getPatientData(this.patient.idnum).subscribe((res: any) => {
+    // 560907-12-6765 this.patient.idnum
+    this.wx.getPatientData('560907-12-6765').subscribe((res: any) => {
       this.patient.prn = res.prn;
       this.vpatient.prn = res.prn;
       this.vpatient.name = `${res.name.firstName} ${res.name.middleName} ${res.name.lastName}`.trim();
@@ -287,6 +319,7 @@ export class AppComponent extends GeneralForm implements OnInit {
       this.vpatient.addr3 = res.homeAddress.address3;
       this.vpatient.state = res.homeAddress.cityState;
       this.vpatient.postcode = res.homeAddress.postalCode;
+      this.vpatient.contact = res.contactNumber.home;
       this.noPatient = false;
       parent.postMessage(this.patient.prn, '*');
     }, (error) => {
