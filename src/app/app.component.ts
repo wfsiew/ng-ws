@@ -131,17 +131,16 @@ export class AppComponent extends GeneralForm implements OnInit {
 
   onProceed() {
     const f = this.mformx.value;
-    console.log(f);
-    if (f.name === true || f.dob === true || f.addr1 === true || f.addr2 === true || f.addr3 === true ||f.postcode === true || f.state === true) {
+    if (f.name === true || f.dob === true || f.addr1 === true || f.addr2 === true || f.addr3 === true || f.postcode === true || f.state === true) {
       const o = {
         name: this.vpatient.name,
         docNo: this.vpatient.idnum, // this.patient.idnum, //'560907-12-6765',
-        dob: this.vpatient.dobs,
-        address1: this.vpatient.addr1,
-        address2: this.vpatient.addr2,
-        address3: this.vpatient.addr3,
-        cityState: this.vpatient.state,
-        postCode: this.vpatient.postcode,
+        dob: f.dob === true ? this.patient.dobs : this.vpatient.dobs,
+        address1: f.addr1 === true ? this.patient.addr1 : this.vpatient.addr1,
+        address2: f.addr2 === true ? this.patient.addr2 : this.vpatient.addr2,
+        address3: f.addr3 === true ? this.patient.addr3 : this.vpatient.addr3,
+        cityState: f.state === true ? this.patient.state : this.vpatient.state,
+        postCode: f.postcode === true ? this.patient.postcode : this.vpatient.postcode,
         sex: this.vpatient.gender === 'FEMALE' ? 'F' : 'M',
         contact: this.vpatient.contact,
         workstationCode: this.vx_comp_name
