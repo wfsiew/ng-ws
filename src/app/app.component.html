@@ -103,7 +103,11 @@
           <div class="card-body">
             <h5 class="card-title"><u>Biodata - MyKad</u></h5>
             <div class="text-danger font-weight-bold">Select record(s) of address to update into VESALIUS</div>
-            <div class="mt-4">
+            <div class="mt-2">
+              <div class="row">
+                <div class="col-sm-2">&nbsp;</div>
+                <div class="col-sm-10">&nbsp;</div>
+              </div>
               <div class="row">
                 <div class="col-sm-2">Name:</div>
                 <div class="col-sm-9">{{ patient.name }}</div>
@@ -170,45 +174,48 @@
       <div class="card mt-3">
         <div class="card-body">
           <h5 class="card-title"><u>Biodata - VESALIUS</u></h5>
-          <div class="row">
-            <div class="col-sm-2">PRN:</div>
-            <div class="col-sm-10">{{ vpatient.prn }}</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">Name:</div>
-            <div class="col-sm-10">{{ vpatient.name }}</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">NRIC:</div>
-            <div class="col-sm-10">{{ vpatient.idnum }}</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">DOB:</div>
-            <div class="col-sm-10">{{ vpatient.dob }}</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">Gender:</div>
-            <div class="col-sm-10">{{ vpatient.gender }}</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">Address 1:</div>
-            <div class="col-sm-10">{{ vpatient.addr1 }}</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">Address 2:</div>
-            <div class="col-sm-10">{{ vpatient.addr2 }}</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">Address 3:</div>
-            <div class="col-sm-10">{{ vpatient.addr3 }}</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">Postal Code:</div>
-            <div class="col-sm-10">{{ vpatient.postcode }}</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">City/State:</div>
-            <div class="col-sm-10">{{ vpatient.state }}</div>
+          <div>&nbsp;</div>
+          <div class="mt-2">
+            <div class="row">
+              <div class="col-sm-2">PRN:</div>
+              <div class="col-sm-10">{{ vpatient.prn }}</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">Name:</div>
+              <div class="col-sm-10">{{ vpatient.name }}</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">NRIC:</div>
+              <div class="col-sm-10">{{ vpatient.idnum }}</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">DOB:</div>
+              <div class="col-sm-10">{{ vpatient.dob }}</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">Gender:</div>
+              <div class="col-sm-10">{{ vpatient.gender }}</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">Address 1:</div>
+              <div class="col-sm-10">{{ vpatient.addr1 }}</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">Address 2:</div>
+              <div class="col-sm-10">{{ vpatient.addr2 }}</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">Address 3:</div>
+              <div class="col-sm-10">{{ vpatient.addr3 }}</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">Postal Code:</div>
+              <div class="col-sm-10">{{ vpatient.postcode }}</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">City/State:</div>
+              <div class="col-sm-10">{{ vpatient.state }}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -449,6 +456,6 @@
   </table>
 </div>
 
-<ngx-ui-loader [loaderId]="'loader-01'"></ngx-ui-loader>
-<ngx-ui-loader></ngx-ui-loader>
+<ngx-ui-loader [loaderId]="'loader-01'" text="Reading MyKad..."></ngx-ui-loader>
+<ngx-ui-loader text="Please wait..."></ngx-ui-loader>
 <router-outlet></router-outlet>

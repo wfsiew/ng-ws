@@ -28,12 +28,13 @@ import { HttpTimeoutInterceptor } from './shared/interceptors/timeout.intercepto
     NgxUiLoaderModule.forRoot({
       bgsPosition: POSITION.topCenter,
       bgsColor: '#f04124',
-      bgsType: 'ball-spin-clockwise',
+      bgsType: 'ball-spin',
       fgsPosition: POSITION.topCenter,
       fgsColor: '#f04124',
-      fgsType: 'ball-spin-clockwise',
+      fgsType: 'ball-spin',
       pbColor: '#f04124',
-      hasProgressBar: true
+      hasProgressBar: true,
+      textPosition: POSITION.centerCenter
     }),
     NgxUiLoaderHttpModule.forRoot({
       showForeground: true,
