@@ -5,6 +5,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { WsService } from './services/ws.service';
 import { WebService } from './services/web.service';
 import { GeneralForm } from './shared/classes/general.form';
+import { setTheme } from 'ngx-bootstrap/utils';
 import * as moment from 'moment';
 
 @Component({
@@ -69,6 +70,7 @@ export class AppComponent extends GeneralForm implements OnInit {
     private route: ActivatedRoute
   ) {
     super();
+    setTheme('bs4');
     this.createForm();
     this.route.queryParams.subscribe(params => {
       this.vx_comp_name = params['vx_comp_name'];

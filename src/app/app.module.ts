@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -18,20 +19,22 @@ import { HttpTimeoutInterceptor } from './shared/interceptors/timeout.intercepto
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
     NgxUiLoaderModule.forRoot({
-      bgsPosition: POSITION.centerCenter,
-      bgsColor: '#1B548A',
-      bgsType: 'square-jelly-box',
-      // fgsColor: '#1B548A',
-      fgsType: 'square-jelly-box'
+      bgsPosition: POSITION.topCenter,
+      bgsColor: '#f04124',
+      bgsType: 'ball-spin-clockwise',
+      fgsPosition: POSITION.topCenter,
+      fgsColor: '#f04124',
+      fgsType: 'ball-spin-clockwise'
     }),
     NgxUiLoaderHttpModule.forRoot({
-      showForeground: false,
+      showForeground: true,
       exclude: []
     }),
   ],
