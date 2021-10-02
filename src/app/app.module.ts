@@ -26,10 +26,10 @@ import { HttpTimeoutInterceptor } from './shared/interceptors/timeout.intercepto
     ReactiveFormsModule,
     ModalModule.forRoot(),
     NgxUiLoaderModule.forRoot({
-      bgsPosition: POSITION.topCenter,
+      bgsPosition: POSITION.centerCenter,
       bgsColor: '#f04124',
       bgsType: 'ball-spin',
-      fgsPosition: POSITION.topCenter,
+      fgsPosition: POSITION.centerCenter,
       fgsColor: '#f04124',
       fgsType: 'ball-spin',
       pbColor: '#f04124',
