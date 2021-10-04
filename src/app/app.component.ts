@@ -58,6 +58,14 @@ export class AppComponent extends GeneralForm implements OnInit {
     contact: ''
   }
 
+  showNameChk = false;
+  showDobChk = false;
+  showAddr1Chk = false;
+  showAddr2Chk = false;
+  showAddr3Chk = false;
+  showPostcodeChk = false;
+  showStateChk = false;
+
   mformx!: FormGroup;
 
   @ViewChild('modalSuccess') modalSuccess!: TemplateRef<any>;
@@ -138,7 +146,7 @@ export class AppComponent extends GeneralForm implements OnInit {
     const f = this.mformx.value;
     if (f.name === true || f.dob === true || f.addr1 === true || f.addr2 === true || f.addr3 === true || f.postcode === true || f.state === true) {
       const o = {
-        name: this.vpatient.name,
+        name: f.name === true ? this.patient.name : this.vpatient.name,
         docNo: this.vpatient.idnum, // this.patient.idnum, //'560907-12-6765',
         dob: f.dob === true ? this.patient.dobs : this.vpatient.dobs,
         address1: f.addr1 === true ? this.patient.addr1 : this.vpatient.addr1,
@@ -313,12 +321,13 @@ export class AppComponent extends GeneralForm implements OnInit {
     }
 
     // 560907-12-6765 this.patient.idnum
-    this.wx.getPatientData('560907-12-6765').subscribe((res: any) => {
+    this.wx.getPatientData(this.patient.idnum).subscribe((res: any) => {
       this.patient.prn = res.prn;
       this.vpatient.prn = res.prn;
       this.vpatient.name = `${res.name.firstName} ${res.name.middleName} ${res.name.lastName}`.trim();
       this.vpatient.idnum = this.getVPatientIDNum(res.documents);
       this.vpatient.dob = res.dob;
+      this.vpatient.dobs = res.dob;
       this.vpatient.gender = res.sex.description.toUpperCase();
       this.vpatient.addr1 = res.homeAddress.address1;
       this.vpatient.addr2 = res.homeAddress.address2;
@@ -327,6 +336,15 @@ export class AppComponent extends GeneralForm implements OnInit {
       this.vpatient.postcode = res.homeAddress.postalCode;
       this.vpatient.contact = res.contactNumber.home;
       this.noPatient = false;
+
+      this.showNameChk = this.patient.name !== this.vpatient.name;
+      this.showDobChk = this.patient.dobs !== this.vpatient.dobs;
+      this.showAddr1Chk = this.patient.addr1 !== this.vpatient.addr1;
+      this.showAddr2Chk = this.patient.addr2 !== this.vpatient.addr2;
+      this.showAddr3Chk = this.patient.addr3 !== this.vpatient.addr3;
+      this.showPostcodeChk = this.patient.postcode !== this.vpatient.postcode;
+      this.showStateChk = this.patient.state !== this.vpatient.state;
+
       parent.postMessage(this.patient.prn, '*');
     }, (error) => {
       console.log(error);

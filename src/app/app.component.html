@@ -111,7 +111,7 @@
               <div class="row">
                 <div class="col-sm-2">Name:</div>
                 <div class="col-sm-9">{{ patient.name }}</div>
-                <div class="col-sm-1">
+                <div class="col-sm-1" *ngIf="showNameChk">
                   <input type="checkbox" class="form-check-input" formControlName="name">
                 </div>
               </div>
@@ -122,7 +122,7 @@
               <div class="row">
                 <div class="col-sm-2">DOB:</div>
                 <div class="col-sm-9">{{ patient.dob }}</div>
-                <div class="col-sm-1">
+                <div class="col-sm-1" *ngIf="showDobChk">
                   <input type="checkbox" class="form-check-input" formControlName="dob">
                 </div>
               </div>
@@ -133,35 +133,35 @@
               <div class="row">
                 <div class="col-sm-2">Address 1:</div>
                 <div class="col-sm-9">{{ patient.addr1 }}</div>
-                <div class="col-sm-1">
+                <div class="col-sm-1" *ngIf="showAddr1Chk">
                   <input type="checkbox" class="form-check-input" formControlName="addr1">
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-2">Address 2:</div>
                 <div class="col-sm-9">{{ patient.addr2 }}</div>
-                <div class="col-sm-1">
+                <div class="col-sm-1" *ngIf="showAddr2Chk">
                   <input type="checkbox" class="form-check-input" formControlName="addr2">
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-2">Address 3:</div>
                 <div class="col-sm-9">{{ patient.addr3 }}</div>
-                <div class="col-sm-1">
+                <div class="col-sm-1" *ngIf="showAddr3Chk">
                   <input type="checkbox" class="form-check-input" formControlName="addr3">
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-2">Postal Code:</div>
                 <div class="col-sm-9">{{ patient.postcode }}</div>
-                <div class="col-sm-1">
+                <div class="col-sm-1" *ngIf="showPostcodeChk">
                   <input type="checkbox" class="form-check-input" formControlName="postcode">
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-2">City/State:</div>
                 <div class="col-sm-9">{{ patient.state }}</div>
-                <div class="col-sm-1">
+                <div class="col-sm-1" *ngIf="showStateChk">
                   <input type="checkbox" class="form-check-input" formControlName="state">
                 </div>
               </div>

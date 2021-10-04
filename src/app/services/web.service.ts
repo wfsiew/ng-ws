@@ -12,7 +12,9 @@ export class WebService {
   constructor(private http: HttpClient) { }
 
   getPatientData(prn: string) {
-    return this.http.get(`${this.baseUrl}/vesalius/patient-data/${prn}`);
+    let prm: HttpParams = new HttpParams()
+      .set('tx', `${new Date().getTime()}`);
+    return this.http.get(`${this.baseUrl}/vesalius/patient-data/${prn}`, { params: prm });
   }
 
   createPatient(o) {
