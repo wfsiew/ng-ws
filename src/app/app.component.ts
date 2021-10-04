@@ -182,6 +182,11 @@ export class AppComponent extends GeneralForm implements OnInit {
     parent.postMessage('onselect', '*');
   }
 
+  onAlertOk() {
+    this.bsModalRef.hide();
+    parent.postMessage('onclose', '*');
+  }
+
   onConvertPatient() {
     this.patient.prn = 'xxx';
     this.bsModalRef = this.modalService.show(
