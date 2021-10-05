@@ -233,7 +233,7 @@ export class AppComponent extends GeneralForm implements OnInit {
       else {
         this.isLoading = false;
         this.ngxLoader.stopLoader('loader-01');
-        this.alertMsg = 'Cannot find a MyKad reader. Please ensure the MyKad reader is connected to the PC';
+        this.alertMsg = 'Failed to read Mykad information. Please ensure Mykad reader is connected to workstation properly and Mykad is slotted correctly into the reader.';
         this.bsModalRef = this.modalService.show(
           this.modalAlert
         );
@@ -327,6 +327,16 @@ export class AppComponent extends GeneralForm implements OnInit {
 
     // 560907-12-6765 this.patient.idnum
     this.wx.getPatientData(this.patient.idnum).subscribe((res: any) => {
+      if (res.errorCode && res.errorCode === '99') {
+        this.patient.prn = '';
+        this.noPatient = false;
+        this.alertMsg = 'More than 1 patient with same NRIC found. Please process the patient manual in VESALIUS.';
+        this.bsModalRef = this.modalService.show(
+          this.modalAlert
+        );
+        return;
+      }
+
       this.patient.prn = res.prn;
       this.vpatient.prn = res.prn;
       this.vpatient.name = `${res.name.firstName} ${res.name.middleName} ${res.name.lastName}`.trim();
@@ -358,6 +368,10 @@ export class AppComponent extends GeneralForm implements OnInit {
       }
       this.noPatient = true;
     });
+  }
+
+  get showChkMsg() {
+    return this.showNameChk || this.showDobChk || this.showAddr1Chk || this.showAddr2Chk || this.showAddr3Chk || this.showPostcodeChk || this.showStateChk;
   }
 
   displayMessage(msg) {

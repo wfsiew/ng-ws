@@ -7,6 +7,10 @@ GET {{baseurl}}/vesalius/patient-data/21-000078
 
 ###
 
+GET {{baseurl}}/vesalius/patient-data/730114-10-5471
+
+###
+
 POST {{baseurl}}/vesalius/createNewPatient
 Content-Type: application/json
 
