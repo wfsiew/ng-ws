@@ -8,14 +8,19 @@ import { NgxUiLoaderModule, NgxUiLoaderHttpModule, POSITION } from 'ngx-ui-loade
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainComponent } from './main/main.component';
+import { MainIhpComponent } from './main-ihp/main-ihp.component';
 
-import { WsService } from './services/ws.service';
 import { WebService } from './services/web.service';
+import { MainService } from './main/services/main.service';
+import { MainIhpService } from './main-ihp/services/main-ihp.service';
 import { HttpTimeoutInterceptor } from './shared/interceptors/timeout.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    MainIhpComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +47,9 @@ import { HttpTimeoutInterceptor } from './shared/interceptors/timeout.intercepto
     }),
   ],
   providers: [
-    WsService,
     WebService,
+    MainService,
+    MainIhpService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpTimeoutInterceptor,
