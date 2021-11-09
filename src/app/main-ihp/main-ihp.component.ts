@@ -270,8 +270,8 @@ export class MainIhpComponent extends GeneralForm implements OnInit {
   }
 
   getDate(ds) {
-    let y = ds.substring(8, 12);
-    let m = ds.substring(4, 6);
+    let y = ds.substring(6, 10);
+    let m = ds.substring(3, 5);
     let d = ds.substring(0, 2);
     let r = `${y}-${m}-${d}`;
     let s = moment(r).format('DD-MMM-YYYY');
@@ -279,9 +279,9 @@ export class MainIhpComponent extends GeneralForm implements OnInit {
   }
 
   getDate1(ds) {
-    let y = ds.substring(0, 4);
-    let m = ds.substring(4, 6);
-    let d = ds.substring(6, 8);
+    let y = ds.substring(6, 10);
+    let m = ds.substring(3, 5);
+    let d = ds.substring(0, 2);
     let r = `${y}-${m}-${d}`;
     let s = moment(r).format('DD-MMM-YYYY');
     return s;
