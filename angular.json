@@ -61,11 +61,13 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngws:build"
+            "browserTarget": "ngws:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngws:build:production"
+              "browserTarget": "ngws:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             }
           }
         },

@@ -6,7 +6,6 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { MainIhpService } from './services/main-ihp.service';
 import { WebService } from 'src/app/services/web.service';
 import { GeneralForm } from 'src/app/shared/classes/general.form';
-import { setTheme } from 'ngx-bootstrap/utils';
 import * as moment from 'moment';
 
 @Component({
@@ -217,6 +216,7 @@ export class MainIhpComponent extends GeneralForm implements OnInit {
 
   loadPatient() {
     // 560907-12-6765 this.patient.idnum
+    this.ngxLoader.startLoader('loader');
     this.wx.getPatientData(this.patient.idnum).subscribe((res: any) => {
       if (res.errorCode && res.errorCode === '99') {
         this.patient.prn = '';
@@ -253,6 +253,7 @@ export class MainIhpComponent extends GeneralForm implements OnInit {
 
       parent.postMessage(this.patient.prn, '*');
     }, (error) => {
+      this.ngxLoader.stopLoader('loader');
       console.log(error);
       if (error.error) {
         console.log(error.error.errorMessage);
