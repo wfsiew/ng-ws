@@ -106,6 +106,7 @@ export class MainIhpComponent extends GeneralForm implements OnInit {
       return;
     }
 
+    this.ngxLoader.startLoader('loader');
     const f = this.mform.value;
     const o = {
       name: this.patient.name,
@@ -123,10 +124,12 @@ export class MainIhpComponent extends GeneralForm implements OnInit {
 
     this.wx.createPatient(o).subscribe((res: any) => {
       this.patient.prn = res.prn;
+      this.ngxLoader.stopLoader('loader');
       this.bsModalRef = this.modalService.show(
         this.modalSuccess
       );
     }, (error) => {
+      this.ngxLoader.stopLoader('loader');
       console.log(error);
       if (error.error) {
         alert(error.error.message);
@@ -151,10 +154,13 @@ export class MainIhpComponent extends GeneralForm implements OnInit {
         workstationCode: this.vx_comp_name
       }
 
+      this.ngxLoader.startLoader('loader');
       this.wx.updatePatient(o, this.patient.prn).subscribe((res: any) => {
+        this.ngxLoader.stopLoader('loader');
         parent.postMessage(this.patient.prn, '*');
         parent.postMessage('onselect', '*');
       }, (error) => {
+        this.ngxLoader.stopLoader('loader');
         console.log(error);
         if (error.error) {
           alert(error.error.message);
