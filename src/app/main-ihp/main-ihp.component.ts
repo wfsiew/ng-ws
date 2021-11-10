@@ -221,6 +221,7 @@ export class MainIhpComponent extends GeneralForm implements OnInit {
       if (res.errorCode && res.errorCode === '99') {
         this.patient.prn = '';
         this.noPatient = false;
+        this.ngxLoader.stopLoader('loader');
         this.alertMsg = 'More than 1 patient with same NRIC found. Please process the patient manual in VESALIUS.';
         this.bsModalRef = this.modalService.show(
           this.modalAlert
@@ -250,6 +251,8 @@ export class MainIhpComponent extends GeneralForm implements OnInit {
       this.showAddr3Chk = this.patient.addr3 !== this.vpatient.addr3;
       this.showPostcodeChk = this.patient.postcode !== this.vpatient.postcode;
       this.showStateChk = this.patient.state !== this.vpatient.state;
+
+      this.ngxLoader.stopLoader('loader');
 
       parent.postMessage(this.patient.prn, '*');
     }, (error) => {
