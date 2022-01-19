@@ -223,8 +223,8 @@
   </div>
 
   <div class="text-right mt-2">
-    <button type="button" class="btn btn-primary" (click)="onClose()">Close</button>
-    <button type="button" class="btn btn-primary ml-2" (click)="onProceed()">Proceed</button>
+    <button type="button" class="btn-confirm" (click)="onProceed()"></button>
+    <button type="button" class="btn-close ml-2" (click)="onClose()"></button>
   </div>
 </div>
 
@@ -287,8 +287,8 @@
     </div>
 
     <div class="text-right mt-2">
-      <button type="button" class="btn btn-primary" (click)="onClose()">Close</button>
-      <button type="submit" class="btn btn-primary ml-2">Create Patient</button>
+      <button type="submit" class="btn-confirm"></button>
+      <button type="button" class="btn-close ml-2" (click)="onClose()"></button>
     </div>
   </form>
 

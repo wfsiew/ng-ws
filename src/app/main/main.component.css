@@ -15,3 +15,27 @@
   left: 0;
   right: 0;
 }
+
+.btn-confirm {
+  background: url('/assets/img/validate_active.png');
+  background-position: 0 0;
+  width: 32px;
+  height: 32px;
+  padding: 0 0 0 0;
+  cursor: pointer;
+  border: none;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.btn-close {
+  background: url('/assets/img/window_close_active.png');
+  background-position: 0 0;
+  width: 32px;
+  height: 32px;
+  padding: 0 0 0 0;
+  cursor: pointer;
+  border: none;
+  color: #FFFFFF;
+  font-weight: bold;
+}
